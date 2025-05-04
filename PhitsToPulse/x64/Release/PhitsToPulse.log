@@ -1,0 +1,16 @@
+﻿  PhitsToPulse.cpp
+C:\Users\symme\source\library\eigen\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
+  
+C:\Users\symme\source\library\eigen\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
+  
+C:\Users\symme\source\library\eigen\Eigen\src\Core\arch\Default\GenericPacketMathFunctions.h(676,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
+  
+  コード生成しています。
+  1 of 11355 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    193 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  PhitsToPulse.vcxproj -> C:\Users\symme\source\repos\PhitsToPulse\x64\Release\PhitsToPulse.exe

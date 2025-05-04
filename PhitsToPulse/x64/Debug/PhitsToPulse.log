@@ -1,0 +1,12 @@
+﻿  PhitsToPulse.cpp
+C:\Users\symme\source\library\eigen\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
+  
+C:\Users\symme\source\library\eigen\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
+  
+C:\Users\symme\source\library\eigen\Eigen\src\Core\arch\Default\GenericPacketMathFunctions.h(676,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
+  
+C:\Users\symme\source\repos\PhitsToPulse\PhitsToPulse\PhitsToPulse.cpp(206,1): warning C4715: '`main'::`10'::<lambda_1>::operator()': 値を返さないコントロール パスがあります。
+  PhitsToPulse.vcxproj -> C:\Users\symme\source\repos\PhitsToPulse\x64\Debug\PhitsToPulse.exe
