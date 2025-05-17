@@ -9,8 +9,9 @@ C:\Users\symme\source\library\eigen\Eigen\src\Core\arch\Default\GenericPacketMat
   (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
   
   コード生成しています。
-  1 of 11355 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    193 functions had inline decision re-evaluated but remain unchanged
+C:\Users\symme\source\repos\PhitsToPulse\PhitsToPulse\PhitsToPulse.cpp(325): warning C4715: '`main'::`43'::<lambda_1>::operator()': 値を返さないコントロール パスがあります。
+  126 of 11409 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
+    115 functions were new in current compilation
+    419 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。
   PhitsToPulse.vcxproj -> C:\Users\symme\source\repos\PhitsToPulse\x64\Release\PhitsToPulse.exe

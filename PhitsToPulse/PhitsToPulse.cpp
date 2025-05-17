@@ -14,6 +14,8 @@
 #include"Dump2Batch.h"
 #include <concurrent_vector.h>
 #include "SpinProgress.hpp"
+#include <fstream>
+#include <iomanip>
 
 void to_json(nlohmann::json& j, const EventInfo& e) {
 	j = nlohmann::json{
@@ -23,6 +25,40 @@ void to_json(nlohmann::json& j, const EventInfo& e) {
 		{"z_deposit", e.z_deposit}, {"E_deposit", e.E_deposit}
 	};
 }
+
+// 例: BlockとTempsの関係は posi=2 -> Block[0], posi=3 -> Block[1] と想定
+
+void exportTempsCSV(const std::string& filename,
+	const std::vector<double>& Block,
+	const std::vector<double>& time,
+	const std::vector<Eigen::VectorXd>& Temps)
+{
+	std::ofstream file(filename);
+	if (!file.is_open()) {
+		std::cerr << "Failed to open " << filename << std::endl;
+		return;
+	}
+
+	// 1行目：空白 + Block (posi = 2 に対応するのは Block[0] とする)
+	file << "time";
+	for (int i = 0; i < Temps.size(); ++i) {
+		file << "," << Block[i];
+	}
+	file << "\n";
+
+	// 各timeごとの行
+	for (size_t j = 0; j < time.size(); ++j) {
+		file << time[j];
+		for (size_t i = 0; i < Temps.size(); ++i) {
+			file << "," << Temps[i][j];
+		}
+		file << "\n";
+	}
+
+	file.close();
+	std::cout << "Exported to " << filename << std::endl;
+}
+
 
 int main()
 {
@@ -98,6 +134,9 @@ int main()
 
 		std::string PulsePath = DataPath + "/" + std::to_string(static_cast<int>(InputPara.E)) + "keV_" + std::to_string(posi) + "/Pulse";
 
+		std::filesystem::create_directories(PulsePath + "/Ch0");
+		std::filesystem::create_directories(PulsePath + "/CH1");
+
 		std::string PulseFile_0 = PulsePath + "/Ch0/CH0_0.dat";
 		std::string PulseFile_1 = PulsePath + "/Ch1/CH1_0.dat";
 
@@ -120,6 +159,23 @@ int main()
 			PulseoutFile_1 << Pulse0[i] << std::endl;
 		}
 		PulseoutFile_1.close();
+
+		std::vector<Eigen::VectorXd> Temps;
+		for (int posi = 2; posi < n_abs_2; posi++) {
+			Eigen::VectorXd Temp(static_cast<int>(InputPara.samples));
+			Temp.setZero();
+			for (int i = 0; i < Consts.size(); i++) {
+				for (int j = 0; j < time.size(); j++) {
+					Temp[j] += Consts[i] * EiVec(posi, i) * std::exp(EigenValues[i].real() * time[j]);
+				}
+			}
+			Temps.push_back(Temp);
+		}
+
+		std::string TempFile = DataPath + "/" + std::to_string(static_cast<int>(InputPara.E)) + "keV_" + std::to_string(posi) + "/Temps.csv";
+
+		exportTempsCSV(TempFile, Block, time, Temps);
+
 	}
 
 	for (const auto& DumpPath : DumpPathes) {
@@ -129,9 +185,6 @@ int main()
 		std::string jsonPath = DumpPath + "/batch.json";
 		std::string dumpPath = DumpPath + "/dumpall.dat";
 
-		
-		std::filesystem::create_directories(DumpPath + "/Pulse/Ch0");
-		std::filesystem::create_directories(DumpPath + "/Pulse/CH1");
 		std::filesystem::create_directories(DumpPath + "/Pulse_ms/Ch0");
 		std::filesystem::create_directories(DumpPath + "/Pulse_ms/CH1");
 
@@ -139,74 +192,49 @@ int main()
 
 		concurrency::concurrent_vector<std::tuple<int, double, double>> PulseInfo_Ch0;
 		concurrency::concurrent_vector<std::tuple<int, double, double>> PulseInfo_Ch1;
+		
+		// JSONファイルが存在するか確認
+		if (std::filesystem::exists(jsonPath)) {
+			SpinProgress spinner;
+			spinner.set_message("Processing batch file...");
+			// JSONから読み込み
+			std::ifstream file(jsonPath);
+			nlohmann::json json_batch;
+			file >> json_batch;
 
-		int Input = -1;
-		while (true) {
-			std::cout << "Continue to analyze phits result? [0]yes [1]no\n";
-			std::cin >> Input;
+			for (auto& [key1, inner] : json_batch.items()) {
+				int int_key1 = std::stoi(key1);
+				for (auto& [key2, event_json] : inner.items()) {
+					int int_key2 = std::stoi(key2);
+					EventInfo event = event_json.get<EventInfo>();
+					batch[int_key1][int_key2] = event;
+				}
+			}
+			spinner.complete("Loaded from batch");
 
-			if (std::cin.fail()) {
-				std::cin.clear(); // エラー状態クリア
-				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 入力バッファクリア
-				std::cout << "Invalid (non-numeric) input. Please enter 0 or 1.\n";
-				continue;
-			}
-
-			if (Input == 0 || Input == 1) {
-				break; // 正常値なのでループを抜ける
-			}
-			else {
-				std::cout << "Invalid Input. Please enter 0 or 1.\n";
-			}
 		}
+		else {
+			// dumpファイルから読み込み
+			SpinProgress spinner;
+			spinner.set_message("Processing dumpall file...");
+			int ReadReturn = ReadDump(dumpPath, batch, InputPara.E / 1000);
+			spinner.complete("Loaded from dump");
 
-		if (Input == 0) {
-			// JSONファイルが存在するか確認
-			if (std::filesystem::exists(jsonPath)) {
-				SpinProgress spinner;
-				spinner.set_message("Processing batch file...");
-				// JSONから読み込み
-				std::ifstream file(jsonPath);
-				nlohmann::json json_batch;
-				file >> json_batch;
-
-				for (auto& [key1, inner] : json_batch.items()) {
-					int int_key1 = std::stoi(key1);
-					for (auto& [key2, event_json] : inner.items()) {
-						int int_key2 = std::stoi(key2);
-						EventInfo event = event_json.get<EventInfo>();
-						batch[int_key1][int_key2] = event;
-					}
-				}
-				spinner.complete("Loaded from batch");
-
+			if (ReadReturn == -1) {
+				std::cout << "Error in dump file\n";
+				return -1;
 			}
-			else {
-				// dumpファイルから読み込み
-				SpinProgress spinner;
-				spinner.set_message("Processing dumpall file...");
-				int ReadReturn = ReadDump(dumpPath, batch, InputPara.E / 1000);
-				spinner.complete("Loaded from dump");
 
-				if (ReadReturn == -1) {
-					std::cout << "Error in dump file\n";
-					return -1;
+			// JSONとして保存
+			nlohmann::json json_batch;
+			for (const auto& [key1, map_inner] : batch) {
+				for (const auto& [key2, event] : map_inner) {
+					json_batch[std::to_string(key1)][std::to_string(key2)] = event;
 				}
-
-				// JSONとして保存
-				nlohmann::json json_batch;
-				for (const auto& [key1, map_inner] : batch) {
-					for (const auto& [key2, event] : map_inner) {
-						json_batch[std::to_string(key1)][std::to_string(key2)] = event;
-					}
-				}
-				std::ofstream file(jsonPath);
-				file << json_batch.dump(4);
-				file.close();
 			}
-		}
-		else if (Input == 1) {
-			return 2;
+			std::ofstream file(jsonPath);
+			file << json_batch.dump(4);
+			file.close();
 		}
 
 		size_t total_items = batch.size(); // 全体の要素数を取得
@@ -238,7 +266,7 @@ int main()
 			VecInit.setZero();
 
 			for (int i=0; i < BlockDeposit.size(); i++) {
-				VecInit[i + 1] = BlockDeposit[i] * PulsePara.e_const / PulsePara.C_abs;
+				VecInit[i + 2] = BlockDeposit[i] * PulsePara.e_const / PulsePara.C_abs;
 			}
 			
 			Eigen::MatrixXd EiVec = EigenVectors.real();
@@ -282,7 +310,7 @@ int main()
 				return -1;
 			}
 			for (int i = 0; i < Pulse0.size(); ++i) {
-				PulseoutFile_1 << Pulse0[i] << std::endl;
+				PulseoutFile_1 << Pulse1[i] << std::endl;
 			}
 			PulseoutFile_1.close();
 
