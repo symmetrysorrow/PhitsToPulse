@@ -51,4 +51,5 @@ struct InputParameters
     std::vector<int> positions;
     int cutoff;
     int history;
+    bool SaveAll;
 };

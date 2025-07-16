@@ -19,7 +19,7 @@ std::vector<double> split_line(const std::string& line);
 InputParameters ReadInputJson(const std::string& InputPath);
 
 // dumpall.dat‚ğbatch‚É‚·‚éŠÖ”
-int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>>& batch, const double& InputEnergy);
+int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>>& batch, const double& InputEnergy, const bool& SaveAll);
 
 // batch‚ğoutput.json‚É‘‚«o‚·ŠÖ”
 void WriteOutput(const std::map<int, std::map<int, EventInfo>>& batch, const std::string& output_file);

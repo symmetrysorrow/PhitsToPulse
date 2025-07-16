@@ -92,11 +92,12 @@ InputParameters ReadInputJson(const std::string& InputPath) {
     }
     InputPara.cutoff = InputJson["cutoff"];
     InputPara.history = InputJson["history"];
+    InputPara.SaveAll = InputJson["SaveAll"];
     return InputPara;
 }
 
 // dumpall.datをbatchにする関数
-int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>>& batch, const double& InputEnergy) {
+int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>>& batch, const double& InputEnergy, const bool& SaveAll) {
     // 定数パラメーター
     constexpr double emin_electron = 0.1;
     constexpr double emin_photon = 0.001;
@@ -104,7 +105,7 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
     // all plot[0], one plot[eventnumber], no plot[-1]
     constexpr float event_number = -1;
 
-    constexpr double energy_threashold = 0.001;
+    constexpr double energy_threshold = 0.001;
 
     // 各イベントの情報をhistoryに代入し、適宜batchに入力する。最終結果はbatchに入る。
     std::map<int, EventInfo> history;
@@ -157,10 +158,16 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
                         for (const auto& [key, event] : history) {
                             total_E_deposit += std::accumulate(event.E_deposit.begin(), event.E_deposit.end(), 0.0);
                         }
-                        if (std::abs(total_E_deposit - InputEnergy) <= energy_threashold)
-                        {
+                        if (SaveAll) {
                             batch[static_cast<int>(nocas)] = history;
                         }
+                        else {
+                            if (std::abs(total_E_deposit - InputEnergy) <= energy_threshold)
+                            {
+                                batch[static_cast<int>(nocas)] = history;
+                            }
+                        }
+                        
                         history.clear();
                         std::map<int, EventInfo> emptyMap;
                         history.swap(emptyMap);

@@ -217,7 +217,7 @@ int main()
 			// dumpファイルから読み込み
 			SpinProgress spinner;
 			spinner.set_message("Processing dumpall file...");
-			int ReadReturn = ReadDump(dumpPath, batch, InputPara.E / 1000);
+			int ReadReturn = ReadDump(dumpPath, batch, InputPara.E / 1000,InputPara.SaveAll);
 			spinner.complete("Loaded from dump");
 
 			if (ReadReturn == -1) {
