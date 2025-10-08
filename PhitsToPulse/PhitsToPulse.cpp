@@ -217,7 +217,20 @@ int main()
 			// dumpファイルから読み込み
 			SpinProgress spinner;
 			spinner.set_message("Processing dumpall file...");
-			int ReadReturn = ReadDump(dumpPath, batch, InputPara.E / 1000,InputPara.SaveAll);
+			std::vector<int> FullEnergyList;
+			int ReadReturn = ReadDump(dumpPath, batch, InputPara.E / 1000,InputPara.SaveAll, FullEnergyList);
+			if (InputPara.SaveAll){
+				std::string IndexListFile = DumpPath + "/FullEnergyList.dat";
+				std::ofstream IndexListS(IndexListFile);
+				if (!IndexListS) {
+					std::cerr << "Failed to open file:" << IndexListFile << std::endl;
+					return -1;
+				}
+				for (const int& index : FullEnergyList) {
+					IndexListS << index << "\n";
+				}
+				IndexListS.close();
+			}
 			spinner.complete("Loaded from dump");
 
 			if (ReadReturn == -1) {
