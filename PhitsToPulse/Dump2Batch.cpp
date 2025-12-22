@@ -110,6 +110,11 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
     // 各イベントの情報をhistoryに代入し、適宜batchに入力する。最終結果はbatchに入る。
     std::map<int, EventInfo> history;
     //std::map<int, std::map<int, EventInfo>> batch;
+#define DEBUG
+
+#ifdef DEBUG
+    bool Debug_mode = false;
+#endif
 
     // 計算に使われる変数
     double ncol = 1;
@@ -130,10 +135,20 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
         return -1;
     }
 
+    std::ofstream debug_file("debug_509607.txt");
+
     std::string line;
     while (std::getline(file, line)) //ファイルの各行ごとに実行
     {
         std::vector<double> column = split_line(line);
+
+#ifdef DEBUG
+        if (Debug_mode) {
+            debug_file << line << "\n";
+        }
+
+#endif // DEBUG
+
 
         if (static_cast<int>(ncol) == 1)
         {
@@ -186,7 +201,21 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
                 }
             }
 
-            if (static_cast<int>(cnt) == 1 && static_cast<int>(ncol) == 4) { nocas = column[0]; }
+            if (static_cast<int>(cnt) == 1 && static_cast<int>(ncol) == 4) 
+            { 
+                nocas = column[0]; 
+#ifdef DEBUG
+                if (static_cast<int>(nocas) == 509607) {
+                    Debug_mode = true;
+                    std::cout << "DEBUG START!\n";
+                    debug_file << line << "\n";
+                }
+                else {
+                    Debug_mode = false;
+                }
+#endif // DEBUG
+
+            }
 
             if (static_cast<int>(cnt) == 2)
             {
@@ -309,6 +338,11 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
     file.close();
     history.clear();
     std::map<int, EventInfo>(history).swap(history);
+
+#ifdef DEBUG
+    debug_file.close();
+#endif
+
 
     return 0;
 }
