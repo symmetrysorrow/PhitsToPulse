@@ -1,0 +1,400 @@
+>>> TARGET EVENT 479579 START <<<
+      479579           1   479579.000000000        479579.000000000             
+  [Data] no: 1, ityp: 14
+  [Check] cnt=16. Current benergy=1.332
+  [Action] cnt reset to -1 (ncol is not 13 or 14)
+  [Action] New ncol detected: 10
+  [Data] no: 1, ityp: 14
+  [Check] cnt=16. Current benergy=1.332
+  [Action] cnt reset to -1 (ncol is not 13 or 14)
+  [Action] New ncol detected: 13
+  [Data] no: 1, ityp: 14
+  [Check] cnt=16. Current benergy=1.332
+  [Action] Collision start (ncol=17). Secondary particles count: 2
+    [Sum] SecPart ityp=12 E=0.309828 (Above threshold, added to energy_new)
+    [Sum] SecPart ityp=13 E=0.000174493 (Below threshold, ignored)
+  [Deposit] ncol=17 Calculation end. deposit=1.332 - 0.309828 = 1.02217
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.309828
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.309828 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.309828 - 0.309828 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.309828
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.287771 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.309828 - 0.287771 = 0.0220572
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.287771
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.287771 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.287771 - 0.287771 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.287771
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.287771 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.287771 - 0.287771 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.287771
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.287771 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.287771 - 0.287771 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.287771
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.287771 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.287771 - 0.287771 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.287771
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.267112 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.287771 - 0.267112 = 0.0206587
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.267112
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.267112 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.267112 - 0.267112 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.267112
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.247035 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.267112 - 0.247035 = 0.0200765
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.247035
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.247035 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.247035 - 0.247035 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.247035
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.247035 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.247035 - 0.247035 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.247035
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.247035 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.247035 - 0.247035 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.247035
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.247035 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.247035 - 0.247035 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.247035
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.247035 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.247035 - 0.247035 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.247035
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.228556 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.247035 - 0.228556 = 0.0184793
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.228556
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.228556 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.228556 - 0.228556 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.228556
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.228556 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.228556 - 0.228556 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.228556
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.210644 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.228556 - 0.210644 = 0.0179116
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.210644
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.210644 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.210644 - 0.210644 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.210644
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.210644 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.210644 - 0.210644 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.210644
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.210644 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.210644 - 0.210644 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.210644
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.196856 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.210644 - 0.196856 = 0.0137884
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.196856
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.196856 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.196856 - 0.196856 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.196856
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.196856 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.196856 - 0.196856 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.196856
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.183889 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.196856 - 0.183889 = 0.0129667
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.183889
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.183889 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.183889 - 0.183889 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.183889
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.183889 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.183889 - 0.183889 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.183889
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.183889 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.183889 - 0.183889 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.183889
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.170588 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.183889 - 0.170588 = 0.0133016
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.170588
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.170588 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.170588 - 0.170588 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.170588
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.170588 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.170588 - 0.170588 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.170588
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.170588 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.170588 - 0.170588 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.170588
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.158165 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.170588 - 0.158165 = 0.0124229
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.158165
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.158165 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.158165 - 0.158165 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.158165
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.158165 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.158165 - 0.158165 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.158165
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.158165 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.158165 - 0.158165 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.158165
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.158165 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.158165 - 0.158165 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.158165
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.146424 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.158165 - 0.146424 = 0.0117409
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.146424
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.146424 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.146424 - 0.146424 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.146424
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.146424 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.146424 - 0.146424 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.146424
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.135309 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.146424 - 0.135309 = 0.0111154
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.135309
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.135309 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.135309 - 0.135309 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.135309
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.135309 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.135309 - 0.135309 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.135309
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.135309 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.135309 - 0.135309 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.135309
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.135309 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.135309 - 0.135309 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.135309
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.135309 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.135309 - 0.135309 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.135309
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.125174 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.135309 - 0.125174 = 0.0101346
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.125174
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.125174 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.125174 - 0.125174 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.125174
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.115669 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.125174 - 0.115669 = 0.00950497
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.115669
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.115669 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.115669 - 0.115669 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.115669
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.115669 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.115669 - 0.115669 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.115669
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.115669 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.115669 - 0.115669 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.115669
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.115669 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.115669 - 0.115669 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.115669
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.115669 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.115669 - 0.115669 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.115669
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.106617 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.115669 - 0.106617 = 0.00905243
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.106617
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.106617 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.106617 - 0.106617 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.106617
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.106617 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.106617 - 0.106617 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.106617
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.106617 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.106617 - 0.106617 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.106617
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.106617 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.106617 - 0.106617 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.106617
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.106617 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.106617 - 0.106617 = 0
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.106617
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.1 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.106617 - 0.1 = 0.0066165
+  [Action] New ncol detected: 14
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.1
+  [Action] Collision start (ncol=17). Secondary particles count: 1
+    [Sum] SecPart ityp=12 E=0.1 (Above threshold, added to energy_new)
+  [Deposit] ncol=17 Calculation end. deposit=0.1 - 0.1 = 0
+  [Action] New ncol detected: 11
+  [Data] no: 2, ityp: 12
+  [Check] cnt=16. Current benergy=0.1
+  [Action] cnt reset to -1 (ncol is not 13 or 14)
+  [Deposit] ncol=11 Energy Cut-off. Added: 0.1
+  [Action] New ncol detected: 11
+  [Data] no: 3, ityp: 13
+  [Check] cnt=16. Current benergy=0.000174493
+  [Action] cnt reset to -1 (ncol is not 13 or 14)
+  [Deposit] ncol=11 Energy Cut-off. Added: 0.000174493
+  [Action] New ncol detected: 4
+  [Action] ncol=4. Committing current history to batch.

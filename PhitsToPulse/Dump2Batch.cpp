@@ -97,26 +97,15 @@ InputParameters ReadInputJson(const std::string& InputPath) {
 }
 
 // dumpall.datをbatchにする関数
-int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>>& batch, const double& InputEnergy, const bool& SaveAll, std::vector<int>& FullEnergyList) {
+int ReadDump(const std::string & DumpPath, std::map<int, std::map<int, EventInfo>>&batch, const double& InputEnergy, const bool& SaveAll, std::vector<int>&FullEnergyList) {
     // 定数パラメーター
     constexpr double emin_electron = 0.1;
     constexpr double emin_photon = 0.001;
-
-    // all plot[0], one plot[eventnumber], no plot[-1]
     constexpr float event_number = -1;
-
     constexpr double energy_threshold = 0.001;
 
-    // 各イベントの情報をhistoryに代入し、適宜batchに入力する。最終結果はbatchに入る。
+    // 内部変数
     std::map<int, EventInfo> history;
-    //std::map<int, std::map<int, EventInfo>> batch;
-#define DEBUG
-
-#ifdef DEBUG
-    bool Debug_mode = false;
-#endif
-
-    // 計算に使われる変数
     double ncol = 1;
     std::vector<double> xyz = { 0,0,0 };
     std::vector<double> cxyz = { 0,0,0 };
@@ -126,29 +115,30 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
     double no = 0;
     std::vector<double> reg(2);
     std::vector<double> name;
-    double benergy, cenergy, ityp, nclsts, jcoll, energy_new, ncl, energy, energy_dps;
+    double benergy = 0, cenergy = 0, ityp = 0, nclsts = 0, jcoll = 0, energy_new = 0, ncl = 0, energy = 0, energy_dps = 0;
+
+#define DEBUG
+    bool Debug_mode = false;
 
     std::ifstream file(DumpPath, std::ios::binary);
-
     if (!file.is_open()) {
         std::cout << DumpPath << " is not open\n";
         return -1;
     }
 
-    std::ofstream debug_file("debug_509607.txt");
+    std::ofstream debug_file("debug_479579.txt");
 
     std::string line;
-    while (std::getline(file, line)) //ファイルの各行ごとに実行
+    while (std::getline(file, line)) // ファイルの各行ごとに実行
     {
         std::vector<double> column = split_line(line);
+        if (column.empty()) continue;
 
 #ifdef DEBUG
         if (Debug_mode) {
-            debug_file << line << "\n";
+            //debug_file << "LINE " << num << ": " << line << "\n";
         }
-
-#endif // DEBUG
-
+#endif
 
         if (static_cast<int>(ncol) == 1)
         {
@@ -158,21 +148,29 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
             no = 0;
             continue;
         }
+
         std::unordered_set<int> valid_values = { 1, 2, 3, 17 };
         if (valid_values.find(static_cast<int>(ncol)) == valid_values.end())
         {
             if (static_cast<int>(cnt) == 0)
             {
                 ncol = column[0];
+#ifdef DEBUG
+                if (Debug_mode) debug_file << "  [Action] New ncol detected: " << ncol << "\n";
+#endif
                 if (ncol != 4) { cnt += 1; }
                 else
                 {
+#ifdef DEBUG
+                    if (Debug_mode) debug_file << "  [Action] ncol=4. Committing current history to batch.\n";
+#endif
                     if (no > 1)
                     {
                         double total_E_deposit = 0;
                         for (const auto& [key, event] : history) {
                             total_E_deposit += std::accumulate(event.E_deposit.begin(), event.E_deposit.end(), 0.0);
                         }
+
                         if (SaveAll) {
                             batch[static_cast<int>(nocas)] = history;
                             if (std::abs(total_E_deposit - InputEnergy) <= energy_threshold)
@@ -186,46 +184,41 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
                                 batch[static_cast<int>(nocas)] = history;
                             }
                         }
-                                                
-                        history.clear();
-                        std::map<int, EventInfo> emptyMap;
-                        history.swap(emptyMap);
-
-                        if (event_number == nocas || static_cast<int>(event_number) == 0) {}
                     }
-                    else {}
 
+                    history.clear();
                     EventInfo event;
                     event.ityp = 14;
                     history[1] = event;
                 }
             }
 
-            if (static_cast<int>(cnt) == 1 && static_cast<int>(ncol) == 4) 
-            { 
-                nocas = column[0]; 
+            if (static_cast<int>(cnt) == 1 && static_cast<int>(ncol) == 4)
+            {
+                nocas = column[0];
 #ifdef DEBUG
-                if (static_cast<int>(nocas) == 509607) {
+                if (static_cast<int>(nocas) == 479579) {
                     Debug_mode = true;
-                    std::cout << "DEBUG START!\n";
-                    debug_file << line << "\n";
+                    std::cout << "DEBUG START! Event 479579 detected.\n";
+                    debug_file << ">>> TARGET EVENT 479579 START <<<\n" << line << "\n";
                 }
                 else {
                     Debug_mode = false;
                 }
-#endif // DEBUG
-
+#endif
             }
 
             if (static_cast<int>(cnt) == 2)
             {
                 no = column[0];
                 ityp = column[2];
+#ifdef DEBUG
+                if (Debug_mode) debug_file << "  [Data] no: " << no << ", ityp: " << ityp << "\n";
+#endif
                 if (ityp != 12 && ityp != 13) { cnt += 1; }
             }
 
             if (static_cast<int>(cnt) == 5 && reg.size() >= 2) { std::copy_n(column.begin(), 2, reg.begin()); }
-
             if (static_cast<int>(cnt) == 8) { name = column; }
 
             if (static_cast<int>(cnt) == 11)
@@ -246,12 +239,20 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
                 cxyz[1] = column[0];
                 cxyz[2] = column[1];
             }
+
             if (static_cast<int>(cnt) == 16)
             {
-                if (!(static_cast<int>(ncol) == 13 || static_cast<int>(ncol) == 14)) { cnt = -1; }
-                if (static_cast<int>(ityp) == 14 || static_cast<int>(ityp) == 12 || static_cast<int>(ityp) == 13) {
-                    if (ncol == 4) {}
+#ifdef DEBUG
+                if (Debug_mode) debug_file << "  [Check] cnt=16. Current benergy=" << benergy << "\n";
+#endif
+                if (!(static_cast<int>(ncol) == 13 || static_cast<int>(ncol) == 14)) {
+                    cnt = -1;
+#ifdef DEBUG
+                    if (Debug_mode) debug_file << "  [Action] cnt reset to -1 (ncol is not 13 or 14)\n";
+#endif
+                }
 
+                if (static_cast<int>(ityp) == 14 || static_cast<int>(ityp) == 12 || static_cast<int>(ityp) == 13) {
                     if (history.find(static_cast<int>(no)) == history.end())
                     {
                         EventInfo new_event;
@@ -265,11 +266,14 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
 
                     if (static_cast<int>(ncol) == 11)
                     {
-                        history[static_cast<int>(no)].E_deposit.push_back(energy);
+                        // 注目：ncol=11の時はbenergy（カットオフ直前のエネルギー）を堆積させる
+                        history[static_cast<int>(no)].E_deposit.push_back(benergy);
                         history[static_cast<int>(no)].x_deposit.push_back(cxyz[0]);
                         history[static_cast<int>(no)].y_deposit.push_back(cxyz[1]);
                         history[static_cast<int>(no)].z_deposit.push_back(cxyz[2]);
-
+#ifdef DEBUG
+                        if (Debug_mode) debug_file << "  [Deposit] ncol=11 Energy Cut-off. Added: " << benergy << "\n";
+#endif
                     }
                 }
             }
@@ -283,7 +287,9 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
                 cnt = -1;
                 ncl = 0;
                 energy_new = 0;
-
+#ifdef DEBUG
+                if (Debug_mode) debug_file << "  [Action] Collision start (ncol=17). Secondary particles count: " << nclsts << "\n";
+#endif
                 if (static_cast<int>(jcoll) == 14)
                 {
                     cnt += 1;
@@ -291,59 +297,62 @@ int ReadDump(const std::string& DumpPath, std::map<int, std::map<int, EventInfo>
                     continue;
                 }
             }
-
         }
 
         if (static_cast<int>(ncol) == 17)
         {
-            if (static_cast<int>(cnt == 1)) { ityp = column[3]; }
+            if (static_cast<int>(cnt) == 1) { ityp = column[3]; }
             if (static_cast<int>(cnt) == 5) { energy = column[1]; }
             if (static_cast<int>(cnt) == 8)
             {
                 int iityp = static_cast<int>(ityp);
                 if (iityp == 14 || iityp == 12 || iityp == 13)
                 {
+                    // Python版と同じしきい値判定
                     if ((energy >= emin_electron && iityp == 12) || (energy >= emin_photon && iityp == 14) || (energy >= emin_electron && iityp == 13))
                     {
+#ifdef DEBUG
+                        if (Debug_mode) debug_file << "    [Sum] SecPart ityp=" << iityp << " E=" << energy << " (Above threshold, added to energy_new)\n";
+#endif
                         energy_new += energy;
                     }
-                    energy_dps = benergy - energy_new;
+                    else {
+#ifdef DEBUG
+                        if (Debug_mode) debug_file << "    [Sum] SecPart ityp=" << iityp << " E=" << energy << " (Below threshold, ignored)\n";
+#endif
+                    }
 
                     if (static_cast<int>(ncl) == static_cast<int>(nclsts) - 1)
                     {
                         ncol = 13;
+                        energy_dps = benergy - energy_new;
                         history[static_cast<int>(no)].E_deposit.push_back(energy_dps);
                         history[static_cast<int>(no)].x_deposit.push_back(cxyz[0]);
                         history[static_cast<int>(no)].y_deposit.push_back(cxyz[1]);
                         history[static_cast<int>(no)].z_deposit.push_back(cxyz[2]);
+#ifdef DEBUG
+                        if (Debug_mode) debug_file << "  [Deposit] ncol=17 Calculation end. deposit=" << benergy << " - " << energy_new << " = " << energy_dps << "\n";
+#endif
                     }
                     else { ncl += 1; }
                     cnt = -1;
-
                 }
             }
         }
 
         if (static_cast<int>(ncol) == 3) { ncol = column[0]; cnt = 0; }
-
-        if (static_cast<int>(ncol) == 2)
-        {
-            break;
-        }
+        if (static_cast<int>(ncol) == 2) { break; }
 
         cnt++;
         num++;
     }
-    //historyに使われているメモリを解放
+
     file.close();
     history.clear();
-    std::map<int, EventInfo>(history).swap(history);
-
+    std::map<int, EventInfo>().swap(history);
 #ifdef DEBUG
     debug_file.close();
 #endif
-
-
     return 0;
 }
 
