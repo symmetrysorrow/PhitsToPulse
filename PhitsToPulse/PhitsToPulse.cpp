@@ -250,6 +250,27 @@ int main()
 			file.close();
 		}
 
+		std::vector<Eigen::VectorXd> Pulse_Blocks_ch0;
+
+		concurrency::parallel_for(0, n_abs,[&](int i) {
+			Eigen::VectorXd VecInit(n_abs_4);
+			VecInit.setZero();
+
+			VecInit[i + 2] = 1.0 * PulsePara.e_const / PulsePara.C_abs;
+
+			Eigen::MatrixXd EiVec = EigenVectors.real();
+			Eigen::VectorXd Consts = EiVec.colPivHouseholderQr().solve(VecInit);
+			Eigen::VectorXd Pulse0(static_cast<int>(InputPara.samples));
+			Pulse0.setZero();
+
+			for (int i = 0; i < Consts.size(); i++) {
+				for (int j = 0; j < time.size(); j++) {
+					Pulse0[j] += Consts[i] * EiVec(0, i) * std::exp(EigenValues[i].real() * time[j]);
+				}
+			}
+			Pulse_Blocks_ch0[i] = std::move(Pulse0);
+		});
+
 		size_t total_items = batch.size(); // 全体の要素数を取得
 		std::atomic<size_t> completed_items(0); // 完了したアイテム数
 		std::mutex output_mutex; // 出力用ミューテックス
@@ -265,42 +286,16 @@ int main()
 				}
 			}
 			
-			std::vector<int> EnergyedBlocks;
-			int count = 1;
-
-			for (const double& pos : BlockDeposit) {
-				if (pos > 0) {
-					EnergyedBlocks.push_back(count);
-				}
-				count++;
-			}
-
-			Eigen::VectorXd VecInit(n_abs_4);
-			VecInit.setZero();
-
-			for (int i=0; i < BlockDeposit.size(); i++) {
-				VecInit[i + 2] = BlockDeposit[i] * PulsePara.e_const / PulsePara.C_abs;
-			}
-			
-			Eigen::MatrixXd EiVec = EigenVectors.real();
-
-			Eigen::VectorXd Consts = EiVec.colPivHouseholderQr().solve(VecInit);
-
 			Eigen::VectorXd Pulse0(static_cast<int>(InputPara.samples));
 			Pulse0.setZero();
-			
-			for (int i = 0; i < Consts.size();i++) {
-				for (int j = 0; j < time.size(); j++) {
-					Pulse0[j] += Consts[i] * EiVec(0,i) *std::exp(EigenValues[i].real() * time[j]);
-				}
-			}
-			
+
 			Eigen::VectorXd Pulse1(static_cast<int>(InputPara.samples));
 			Pulse1.setZero();
 
-			for (int i = 0; i < Consts.size(); i++) {
-				for (int j = 0; j < time.size(); j++) {
-					Pulse1[j] += Consts[i] * EiVec(n_abs_3, i) * std::exp(EigenValues[i].real() * time[j]);
+			for (int i = 0; i < Pulse_Blocks_ch0.size(); i++) {
+				if (BlockDeposit[i] != 0) {
+					Pulse0 += BlockDeposit[i] * Pulse_Blocks_ch0[i];
+					Pulse0 += BlockDeposit[i] * Pulse_Blocks_ch0[n_abs-1-i];
 				}
 			}
 

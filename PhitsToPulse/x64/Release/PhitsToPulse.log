@@ -1,9 +1,29 @@
-﻿  Dump2Batch.cpp
-D:\Documents\github\PhitsToPulse\PhitsToPulse\Dump2Batch.cpp(41,45): warning C4101: 'e': ローカル変数は 1 度も使われていません。
-D:\Documents\github\PhitsToPulse\PhitsToPulse\Dump2Batch.cpp(44,41): warning C4101: 'e': ローカル変数は 1 度も使われていません。
+﻿  Batch2Pulse.cpp
+D:\source\library\eigen\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Batch2Pulse.cpp' をコンパイルしています)
+  
+D:\source\library\eigen\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Batch2Pulse.cpp' をコンパイルしています)
+  
+D:\source\library\eigen\Eigen\src\Core\arch\Default\GenericPacketMathFunctions.h(676,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'Batch2Pulse.cpp' をコンパイルしています)
+  
+  Dump2Batch.cpp
+D:\Github\PhitsToPulse\PhitsToPulse\Dump2Batch.cpp(41,45): warning C4101: 'e': ローカル変数は 1 度も使われていません。
+D:\Github\PhitsToPulse\PhitsToPulse\Dump2Batch.cpp(44,41): warning C4101: 'e': ローカル変数は 1 度も使われていません。
+  PhitsToPulse.cpp
+D:\source\library\eigen\Eigen\src\Core\arch\Default\Half.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
+  
+D:\source\library\eigen\Eigen\src\Core\arch\Default\BFloat16.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
+  
+D:\source\library\eigen\Eigen\src\Core\arch\Default\GenericPacketMathFunctions.h(676,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  (ソース ファイル 'PhitsToPulse.cpp' をコンパイルしています)
+  
   コード生成しています。
-  1 of 11408 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    193 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
+D:\Github\PhitsToPulse\PhitsToPulse\PhitsToPulse.cpp(333): warning C4715: '`main'::`43'::<lambda_2>::operator()': 値を返さないコントロール パスがあります。
+  All 11496 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   コード生成が終了しました。
-  PhitsToPulse.vcxproj -> D:\Documents\github\PhitsToPulse\x64\Release\PhitsToPulse.exe
+  PhitsToPulse.vcxproj -> D:\Github\PhitsToPulse\x64\Release\PhitsToPulse.exe
